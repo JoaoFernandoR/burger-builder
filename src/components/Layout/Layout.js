@@ -1,5 +1,6 @@
 import React from 'react'
-
+// Css
+import './Layout.css'
 
 const Layout = props => {
 
@@ -11,7 +12,7 @@ const Layout = props => {
             Toolbar, SideDrawer, Backdrop
         </div>
         <main>
-            {props.children}
+            {children}
         </main>
     </React.Fragment>
     )
