@@ -34,7 +34,6 @@ const BurgerIngredient = props => {
         default :
             ingredient =null
     }
-    console.log(ingredient)
     return ingredient
 
 }
