@@ -1,0 +1,14 @@
+.ui_button {
+    padding: 0.4rem 1.2rem;
+    background-color: rgba(70, 165, 110, 1);
+    border-radius: 8px;
+    color : white;
+    font-family: 'Open Sans', sans-serif;
+    transition : linear 1s
+}
+
+.ui_button:hover {
+    cursor: pointer;
+    transform: rotate(5deg);
+    background-color: rgb(39, 112, 70);
+}

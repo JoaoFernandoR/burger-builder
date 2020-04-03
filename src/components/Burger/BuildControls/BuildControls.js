@@ -6,7 +6,7 @@ import BuildControl from './BuildControl/BuildControl'
 
 const BuildControls = props => {
  
-    const {addIngredientHandler, removeIngredientHandler, totalPrice, disabledInfo} = props
+    const {addIngredientHandler, removeIngredientHandler, totalPrice, disabledInfo, handleModal} = props
      
     const controls = [
         { label : 'salad', ctrl : 'salad'},
@@ -38,7 +38,9 @@ const BuildControls = props => {
         removeIngredientHandler={removeIngredientHandler}
         disabled={disabledInfo[item.ctrl]}
         />)}
-        <button className='OrderButton my-4' disabled={purchasable()}> ORDER NOW</button>
+        <button className='OrderButton my-4' 
+        disabled={purchasable()}
+        onClick={handleModal}> ORDER NOW</button>
     </div>
    )
 }

@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 // Components
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import Modal from 'react-animated-modal'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
 const INGREDIENT_PRICES = {
     salad : 0.50,
@@ -17,10 +19,11 @@ const BurgerBuilder = () => {
     const [cheese, setCheese] = useState(0)
     const [meat, setMeat] = useState(0)
     const [totalPrice, setTotalPrice] = useState(4)
+    const [showModal, setShowModal] = useState(false)
 
     const objectState = { salad, cheese, meat, bacon}
 
-
+    // Funções
     const addIngredientHandler = (label) => {
         if (label === 'salad') {
             setSalad(salad + 1)
@@ -69,6 +72,11 @@ const BurgerBuilder = () => {
         }
     }
 
+    const handleModal = () => {
+        setShowModal(!showModal)
+    }
+    // Fim das funções
+
     const disabledInfo = {
         ...objectState
     }
@@ -80,11 +88,18 @@ const BurgerBuilder = () => {
 
     return (
     <React.Fragment>
+        <Modal 
+        visible={showModal} 
+        closemodal={() => setShowModal(false)} 
+        type='flipInX'>
+            <OrderSummary ingredients={objectState} handleModal={handleModal}/>
+            </Modal>
         <Burger salad={salad} bacon={bacon} cheese={cheese} meat={meat}/>
         <BuildControls addIngredientHandler={addIngredientHandler} 
         removeIngredientHandler={removeIngredientHandler}
         totalPrice={totalPrice}
         disabledInfo={disabledInfo}
+        handleModal={handleModal}
         />
     </React.Fragment>
     )
